@@ -1,0 +1,42 @@
+{% load static %}
+{% include 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
+</head>
+<body>
+{% for message in messages %}
+    <h3 id="msg"  class="msg" align="center"> {{ message }}</h3>
+{% endfor %}
+<div class="signup-form">
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+		<h2>Register </h2>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="name" placeholder="Name" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+        </div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+        <h4>Already Have Account? <a href="{% url 'login' %}">Login </a></h4>
+
+    </form>
+</div>
+</body>
+
+</html>

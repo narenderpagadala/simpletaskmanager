@@ -1,0 +1,56 @@
+{% include 'base.html' %}
+<html>
+<head>
+<title> Task-details </title>
+</head>
+<body>
+
+<div class="container">
+  <h3>Check your to do list</h3>
+  <h3 align="right">
+      <form action="{% url 'new_takk_create' %}">
+          <button type="submit" class="btn btn-primary btn">Create New Task </button>
+      </form>
+  </h3>
+</div>
+<hr>
+<div class="container">
+<form method="post">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Task ID</th>
+        <th>Task Name</th>
+        <th>Owner</th>
+        <th>Assign Data</th>
+        <th>Last day to Finish</th>
+        <th>Priority</th>
+        <th>status</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+      {% for task in task_data%}
+    <tbody>
+      <tr>
+        <td> {{ task.id }}</td>
+        <td>  <a href="{% url 'my_task'  %}"> {{ task.task_title }}</a> </td>
+        <td>{{ task.assigning_to}}</td>
+        <td>{{ task.task_assign_date }}</td>
+        <td>{{ task.task_complete_date }}</td>
+        <td>{{ task.priority }}</td>
+        <td>
+            <select name="status">}
+                    <option value="progress">Progress</option>}
+                    <option value="done"> Done </option>}
+                    <option value="block">Block</option>}
+                </select>
+        </td>
+        <td><a>Yes </a></td>
+      </tr>
+    </tbody>
+      {% endfor %}
+  </table>
+</form>
+</div>
+</body>
+</html>
